@@ -2,27 +2,36 @@
 <form [formGroup]="addBookForm" >
     <div class="form-group">
         <label for="title">
-            Title:
+            * Title:
             <input name="title" class="form-control" type="text" formControlName="title">
-            <p *ngIf="addBookForm.controls.title.touched && addBookForm.controls.title.invalid">Please fill title</p>
         </label>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid && title.errors.required">
+            Please fill title
+        </div>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid && title.errors.maxlength">
+            The max length of title is 30 characters
+        </div>
     </div>
     <div class="form-group">
         <label for="category">
-            Category:
-            <p-dropdown name="category" [options]="bookOptions" formControlName="category" (onChange)="selectCategory($event.value)">
-            </p-dropdown>
-            <p *ngIf="addBookForm.controls.category.touched && addBookForm.controls.category.invalid">Please fill category</p>
+           * Category:
+            <p-dropdown name="category" [options]="bookOptions" formControlName="category">
+            </p-dropdown> 
         </label>
+        <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+            Please select category
+        </div>
     </div>
     <div class="form-group">
         <label for="description">
-            Description:
+            * Description:
             <textarea class="form-control" rows="3" name="description" formControlName="description" ></textarea>
-            <p *ngIf="addBookForm.controls.description.touched && addBookForm.controls.description.invalid">Please fill description</p>
         </label>
+        <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+            Please fill description
+        </div> 
     </div>
     <div class="form-group">
-        <button class="btn btn-primary" (click)="addNewBook()">Add</button>
+        <button class="btn btn-primary" (click)="addNewBook()" [disabled]="addBookForm.status === 'INVALID'">Add</button>
     </div>
 </form>

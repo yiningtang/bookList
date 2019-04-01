@@ -1,10 +1,13 @@
-<h2>Book List</h2>
-<div *ngIf="books">
+<div class="one-line">
+  <h2>Book List</h2>
+  <div class="count" *ngIf="count">({{count}})</div>
+</div>
+<div>
   <div *ngFor="let book of books; trackBy: trackByFn" class="card book-card">
     <div class="card-body">
-        <h5 class="card-title">{{book.title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{book.category}}</h6>
-      <p class="card-text">{{book.description}}</p>
+      <h5 class="card-title">Title:&nbsp;{{book.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">({{book.category}})</h6>
+      <p class="card-text">Description:&nbsp;{{book.description}}</p>
     </div>
   </div>
 </div>

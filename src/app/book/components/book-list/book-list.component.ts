@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, SimpleChanges, OnChanges } from '@angular/core';
 import { Book } from '../../book.model';
 
 @Component({
@@ -7,15 +7,23 @@ import { Book } from '../../book.model';
   styleUrls: ['./book-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnChanges{
   @Input() books: Book[];
-  constructor() { }
+  public count: number;
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   trackByFn(item) {
     return item;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.books && changes.books.currentValue) {
+      this.count = this.books.length;
+    }
   }
 
 }

@@ -9,10 +9,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddBookComponent implements OnInit {
   public bookOptions = [
-  { label: '', value: ''},
-  { label: 'Drama', value: 'drama' },
-  { label: 'Comedy', value: 'comedy' },
-  { label: 'Sports', value: 'sports' }];
+    { label: '', value: '' },
+    { label: 'Drama', value: 'drama' },
+    { label: 'Comedy', value: 'comedy' },
+    { label: 'Sports', value: 'sports' }];
   @Output() addBook = new EventEmitter();
 
   public addBookForm: FormGroup;
@@ -22,16 +22,27 @@ export class AddBookComponent implements OnInit {
       title: ['', [Validators.required, Validators.maxLength(30)]],
       category: ['', Validators.required],
       description: ['', Validators.required]
-    })
-   }
+    });
+  }
+
+  get title() {
+    return this.addBookForm.controls.title;
+  }
+
+  get category() {
+    return this.addBookForm.controls.category;
+  }
+
+  get description() {
+    return this.addBookForm.controls.description;
+  }
 
   ngOnInit() {
 
   }
 
   addNewBook() {
-    if(this.addBookForm.status.toLocaleLowerCase() === 'valid') {
-      console.log(this.addBookForm);
+    if (this.addBookForm.status.toLocaleLowerCase() === 'valid') {
       this.addBook.emit(this.addBookForm.value);
       this.clearBookForm();
     }
@@ -39,10 +50,6 @@ export class AddBookComponent implements OnInit {
 
   clearBookForm() {
     this.addBookForm.reset();
-  }
-
-  selectCategory(item) {
-   // this.addBookForm.controls.category.setValue(item.value);
   }
 
 }

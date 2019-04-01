@@ -1,32 +1,13 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject} from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookComponent } from './book.component';
-import { AddBookComponent } from '../components/add-book/add-book.component';
 import { BookListComponent } from '../components/book-list/book-list.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { BehaviorSubject, Observable, AsyncSubject, observable } from 'rxjs';
+import { TestStore } from './mockStore';
 import { Store } from '@ngrx/store';
 import { BookState } from '../state/book.reducer';
 import { Book } from '../book.model';
-
-export class TestStore<T> {
-  private state: AsyncSubject<T> = new AsyncSubject();
-
-  setState(data: T) {
-    this.state.next(data);
-  }
-
-  select(selector?: any): Observable<T> {
-    return this.state.asObservable();
-  }
-
-  dispatch(action: any) { }
-
-  pipe(selector?: any) {
-    return this.select(selector);
-  }
-
-}
+import { MockAddBookComponent } from './mockAddBookComponent';
 
 describe('BookComponent', () => {
   let component: BookComponent;
@@ -37,7 +18,7 @@ describe('BookComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         BookComponent,
-        AddBookComponent,
+        MockAddBookComponent,
         BookListComponent
       ],
       imports: [
@@ -53,8 +34,8 @@ describe('BookComponent', () => {
   }));
 
   beforeEach(inject([Store], (testStore: TestStore<BookState>) => {
-    store = testStore;                            // save store reference for use in tests
-    store.setState({ books: [] }); // set default state
+    store = testStore;
+    store.setState({ books: [] });
   }));
 
   beforeEach(() => {
@@ -76,5 +57,13 @@ describe('BookComponent', () => {
     component.books$.subscribe(booksArray => {
       expect(booksArray).toBe(books);
     });
+  });
+
+  it('New book form should be passed after user adds', () => {
+    spyOn(component, 'onAddBook');
+    const addBtn = fixture.debugElement.nativeElement.querySelector('button#mockBtn');
+    addBtn.click();
+    fixture.detectChanges();
+    expect(component.onAddBook).toHaveBeenCalled();
   });
 });

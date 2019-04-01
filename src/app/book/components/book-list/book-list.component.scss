@@ -6,3 +6,12 @@
     display:inline-block;
     padding-right: 1em;
 }
+
+.one-line {
+    h2, div.count {
+        display: inline-block;
+    }
+    .count {
+        font-size: 2em;
+    }
+}
