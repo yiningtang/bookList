@@ -9,7 +9,7 @@ import { AddBook } from '../state/book.actions';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.sass']
+  styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
   public books$: Observable<Book[]>;
