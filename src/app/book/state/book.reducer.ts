@@ -14,7 +14,7 @@ export function bookReducer(state = initialBookState, action: BookActions): Book
     switch (action.type) {
         case BookActionTypes.AddBook:
             const books: Book[] = [...state.books, action.payLoad];
-            return Object.assign({}, state, {books});
+            return Object.assign({}, state, { books });
         default:
             return state;
     }

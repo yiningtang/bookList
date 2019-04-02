@@ -7,7 +7,7 @@ import { Book } from '../../book.model';
   styleUrls: ['./book-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookListComponent implements OnInit, OnChanges{
+export class BookListComponent implements OnInit, OnChanges {
   @Input() books: Book[];
   public count: number;
   constructor() {
@@ -21,7 +21,7 @@ export class BookListComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.books && changes.books.currentValue) {
+    if (changes.books && changes.books.currentValue) {
       this.count = this.books.length;
     }
   }

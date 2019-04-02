@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, inject} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookComponent } from './book.component';
 import { BookListComponent } from '../components/book-list/book-list.component';
@@ -30,7 +30,7 @@ describe('BookComponent', () => {
         { provide: Store, useClass: TestStore }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(inject([Store], (testStore: TestStore<BookState>) => {
@@ -49,9 +49,9 @@ describe('BookComponent', () => {
   });
 
   it('books component should get books from store', () => {
-    const books: Book[] =   [{id: '1', title: 'test', category: 'sport', description: 'testest'}];
+    const books: Book[] = [{ id: '1', title: 'test', category: 'sport', description: 'testest' }];
     store.setState(
-     books
+      books
     );
     fixture.detectChanges();
     component.books$.subscribe(booksArray => {

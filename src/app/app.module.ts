@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { AppRouteModule } from './app-route/app-route.module';

@@ -8,7 +8,7 @@ export enum BookActionTypes {
 
 export class AddBook implements Action {
     readonly type = BookActionTypes.AddBook;
-    constructor(public payLoad: Book) {}
+    constructor(public payLoad: Book) { }
 }
 
 export type BookActions = AddBook;

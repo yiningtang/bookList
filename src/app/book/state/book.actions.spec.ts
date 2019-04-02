@@ -14,6 +14,6 @@ describe('Add a New Book', () => {
             type: BookActionTypes.AddBook,
             payLoad: book
         };
-        expect({...action}).toEqual(expectedAction);
+        expect({ ...action }).toEqual(expectedAction);
     });
 });

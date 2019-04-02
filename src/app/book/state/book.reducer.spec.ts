@@ -1,5 +1,5 @@
 import { bookReducer } from './book.reducer';
-import {  AddBook, BookActionTypes } from './book.actions';
+import { AddBook, BookActionTypes } from './book.actions';
 import { Book } from '../book.model';
 
 describe('Add a New Book', () => {
@@ -18,7 +18,7 @@ describe('Add a New Book', () => {
             category: 'sport',
             description: 'testtest'
         };
-        const action = {...new AddBook(newBook)};
+        const action = { ...new AddBook(newBook) };
         const state = bookReducer(initialBookState, action);
         const expectedState = {
             books: [...initialBookState.books, newBook]

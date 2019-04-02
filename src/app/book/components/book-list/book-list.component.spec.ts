@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
 import { BookListComponent } from './book-list.component';
 import { Book } from '../../book.model';
-import { of } from 'rxjs/internal/observable/of';
 import { Component } from '@angular/core';
 
 
@@ -21,9 +19,9 @@ describe('BookListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookListComponent, MockBookComponent ],
+      declarations: [BookListComponent, MockBookComponent],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

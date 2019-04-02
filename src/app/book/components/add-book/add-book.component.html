@@ -5,10 +5,10 @@
             * Title:
             <input name="title" class="form-control" type="text" formControlName="title">
         </label>
-        <div class="alert alert-danger" *ngIf="title.touched && title.invalid && title.errors.required">
+        <div class="alert alert-danger" *ngIf="formTitle.touched && formTitle.invalid && formTitle.errors.required">
             Please fill title
         </div>
-        <div class="alert alert-danger" *ngIf="title.touched && title.invalid && title.errors.maxlength">
+        <div class="alert alert-danger" *ngIf="formTitle.touched && formTitle.invalid && formTitle.errors.maxlength">
             The max length of title is 30 characters
         </div>
     </div>
@@ -18,18 +18,18 @@
             <p-dropdown name="category" [options]="bookOptions" formControlName="category">
             </p-dropdown> 
         </label>
-        <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+        <div class="alert alert-danger" *ngIf="formCategory.touched && formCategory.invalid">
             Please select category
         </div>
     </div>
     <div class="form-group">
         <label for="description">
             * Description:
-            <textarea class="form-control" rows="3" name="description" formControlName="description" ></textarea>
+            <textarea class="form-control" name="description" formControlName="description" ></textarea>
         </label>
-        <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+        <div class="alert alert-danger" *ngIf="formDescription.touched && formDescription.invalid">
             Please fill description
-        </div> 
+        </div>
     </div>
     <div class="form-group">
         <button class="btn btn-primary" (click)="addNewBook()" [disabled]="addBookForm.status === 'INVALID'">Add</button>

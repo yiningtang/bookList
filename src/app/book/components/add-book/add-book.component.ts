@@ -25,15 +25,15 @@ export class AddBookComponent implements OnInit {
     });
   }
 
-  get title() {
+  get formTitle() {
     return this.addBookForm.controls.title;
   }
 
-  get category() {
+  get formCategory() {
     return this.addBookForm.controls.category;
   }
 
-  get description() {
+  get formDescription() {
     return this.addBookForm.controls.description;
   }
 
