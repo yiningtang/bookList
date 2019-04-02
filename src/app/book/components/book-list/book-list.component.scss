@@ -1,6 +1,6 @@
 .book-card {
-    width: 100%;
-    margin: 1em;
+    width: 70%;
+    margin: 1em auto;
 }
 
 .card-title,
@@ -10,7 +10,8 @@
 }
 
 .one-line {
-
+    width: 70%;
+    margin: auto;
     h2,
     div.count {
         display: inline-block;

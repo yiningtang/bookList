@@ -1,0 +1,11 @@
+form {
+    width: 70%;
+    margin: auto;
+    label {
+        width: 100%;
+    }
+}
+
+/deep/ div.ui-dropdown {
+    width: 100%;
+}

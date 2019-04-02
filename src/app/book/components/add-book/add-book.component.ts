@@ -16,6 +16,7 @@ export class AddBookComponent implements OnInit {
   @Output() addBook = new EventEmitter();
 
   public addBookForm: FormGroup;
+  public id = 0;
 
   constructor(private fb: FormBuilder) {
     this.addBookForm = this.fb.group({
@@ -43,7 +44,11 @@ export class AddBookComponent implements OnInit {
 
   addNewBook() {
     if (this.addBookForm.status.toLocaleLowerCase() === 'valid') {
-      this.addBook.emit(this.addBookForm.value);
+      const newBook = {
+        ...this.addBookForm.value,
+        id: this.id++
+      };
+      this.addBook.emit(newBook);
       this.clearBookForm();
     }
   }
