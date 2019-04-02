@@ -1,5 +1,5 @@
 import { bookReducer } from './book.reducer';
-import { AddBook, BookActionTypes } from './book.actions';
+import { AddBook } from './book.actions';
 import { Book } from '../book.model';
 
 describe('Add a New Book', () => {
